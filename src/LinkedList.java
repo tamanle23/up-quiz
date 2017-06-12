@@ -3,28 +3,8 @@ public class LinkedList {
 	private Node head;
 	private Node tail;
 
-	public Node getHead() {
-		return head;
-	}
-
-	public void setHead(Node head) {
-		this.head = head;
-	}
-
-	public Node getTail() {
-		return tail;
-	}
-
-	public LinkedList() {
-
-	}
-
 	public void setTail(Node tail) {
 		this.tail = tail;
-	}
-
-	public void append(int elementValue) {
-		this.add(new Node(elementValue));
 	}
 
 	private void add(Node element) {
@@ -37,6 +17,10 @@ public class LinkedList {
 		}
 	}
 
+	public void append(int elementValue) {
+		this.add(new Node(elementValue));
+	}
+	
 	public void removeTail() {
 		if (tail != null) {
 			Node node = head;
@@ -64,13 +48,37 @@ public class LinkedList {
 					if(prev==null){
 						head = node;
 					} else {
-						prev.setNextNode(node.getNextNode());
+						node = node.getNextNode();
+						prev.setNextNode(node);
 					}
+				} else {
+					prev = node;
+					node = node.getNextNode();
 				}
-				prev = node;
-				node = node.getNextNode();
 			}
 			tail = prev;
+		}
+	}
+	
+	class Node {
+		private int value;
+		private Node nextNode;
+		
+		public Node(int elementValue){
+			this.value = elementValue;
+		}
+		
+		public int getValue() {
+			return value;
+		}
+		public void setValue(int value) {
+			this.value = value;
+		}
+		public Node getNextNode() {
+			return nextNode;
+		}
+		public void setNextNode(Node nextNode) {
+			this.nextNode = nextNode;
 		}
 	}
 }
