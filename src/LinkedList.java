@@ -46,7 +46,8 @@ public class LinkedList {
 			while(node!=null){
 				if(node.getValue()>targetValue){
 					if(prev==null){
-						head = node;
+						head = node.getNextNode();
+						node = head;
 					} else {
 						node = node.getNextNode();
 						prev.setNextNode(node);
